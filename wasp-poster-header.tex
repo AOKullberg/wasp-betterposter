@@ -1,0 +1,64 @@
+\usepackage{lipsum}
+\usepackage{relsize}	% For \smaller
+\usepackage{url}	% For \url
+\usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage[labelfont=bf]{caption}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{svg}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
+
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{colorbrewer}
+
+% \usepgfplotslibrary{external}
+% \tikzexternalize
+\pgfplotsset{compat=1.18}
+
+% PATHS
+\graphicspath{{template-images/}{content-images/}}
+
+% FONTS AND COLORS
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\mytitlefont}{\fontfamily{\familydefault}\selectfont }
+\newcommand{\mytextfont}{\fontfamily{\familydefault}\selectfont }
+% Comment the four lines below to skip WASP fonts
+% \usepackage{MinionPro}
+% \usepackage{MyriadPro}
+% \renewcommand{\mytitlefont}{\fontfamily{MyriadPro-LF}\selectfont }
+% \renewcommand{\mytextfont}{\fontfamily{MinionPro-LF}\selectfont }
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+
+\definecolor{wasppink}{RGB}{232,50,120}
+\definecolor{waspgrey}{RGB}{88,89,91}
+\definecolor{waspdarkgrey}{RGB}{179,190,189}
+\definecolor{waspblue}{RGB}{26,141,173}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\definecolor{wasp_text}{RGB}{66,80,82}
+\colorlet{wasp_banner_light}{waspblue}
+\colorlet{wasp_banner_dark}{wasp_text}
+
+% LIST SETTINGS
+\setlist{itemsep=.1em, leftmargin=1em}
+
+% COMMANDS
+\newcommand\thetitle{}\renewcommand\title[1]{\renewcommand\thetitle{#1}}
+\newcommand\theauthor{}\renewcommand\author[1]{\renewcommand\theauthor{#1}}
+\newcommand\thedepinfo{}\newcommand\depinfo[1]{\renewcommand\thedepinfo{#1}}
+\newcommand\thesupervisors{}\newcommand\supervisors[1]{\renewcommand\thesupervisors{#1}}
+\newcommand\theuniversitylogo{}\newcommand\universitylogo[1]{\renewcommand\theuniversitylogo{#1}}
+\newcommand\thecompanylogo{}\newcommand\companylogo[1]{\renewcommand\thecompanylogo{#1}}

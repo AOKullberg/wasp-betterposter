@@ -1,0 +1,153 @@
+% This Latex poster uses the baposter class, originally from
+% http://www.brian-amberg.de/uni/poster. Versions are found in several places.
+% The files on which this version is based are from circulation within WASP
+% and exact origins are not known.
+%
+% CONTENT
+% To update the poster, modify the contents in the parts/ folder.
+% The file header.tex contains convenience commands such as \title, \companylogo etc.
+% Other files contain pure formatting.
+%
+% COLORS
+% The following standard colors are defined: wasp_text, wasppink, waspgrey, waspblue
+%
+% Enjoy!
+% Per Skarin, 2021
+% 
+% This template is based on the wasp poster template but adjusted to be a "betterposter" ish design.
+% Should work out of the box, but just like the wasp poster template it is riddled with bugs and hardcoding. Deal with it.
+% 
+% Anton Kullberg, 2024
+
+\documentclass[a0paper,portrait]{baposter}
+\input{wasp-poster-header}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{parts/header}
+
+\begin{document}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+ % Show grid to help with alignment
+ grid=false,
+ % eyecatcher=false,
+ % Column spacing
+ colspacing=1em,
+ columns=2,
+ boxpadding=.5cm,
+ % Color style
+ headerColorOne=wasp_banner_light,
+ borderColor=wasp_banner_light,
+ headerFontColor=cyan!10!white,
+ % Format of textbox
+ textborder=faded,
+ % Format of text header
+ headerborder=open,
+ headershape=roundedright,
+ headershade=plain,
+ background=none,
+ % bgColorOne=cyan!10!white,
+ headerheight=0pt}%.11\textheight}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%%% This is usually for the title page in the WASP template. Needs to be empty. %%%%
+{\begin{minipage}{\paperwidth}
+%
+\end{minipage}
+}
+%%% DUE TO THE WASP POSTER TEMPLATE, DO NOT REMOVE THESE TWO BLANK ROWS -- IT WILL BREAK COMPILATION.
+
+
+%%%%% BETTER POSTER MAIN FINDING %%%%%
+%%% Here you want to explain your main findings in CLEAR, PLAIN ENGLISH! Emphasize important words! %%%
+\headerbox{\mytitlefont}{name=finding,column=0,row=0,span=2,borderColor=white,headerColorOne=white}{
+  \mytextfont
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % This header has a very much hard-coded size. Obviously, you can change it if you really want to.
+  { % This is suitable for at most 4 lines of text. Any more and you will need to adjust the height of the minipage and probably the vertical space as well.
+  \vspace*{-1cm} % This spacing ensures "okay" alignment to the top
+  \tikz[remember picture, overlay] \useasboundingbox[fill=wasp_banner_light] (-2cm, -4cm) rectangle (1.5\paperwidth, 2.5cm);
+  \begin{minipage}[t][4.5cm][t]{\textwidth}
+    \Huge
+    Put your main finding here, in CLEAR and PLAIN English. Remember to \textbf{emphasize} the \textbf{important} words! The default size is perfect for 2-4 lines of text, no more. Actually, it shouldn't be more anyway.
+  \end{minipage}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% THIS IS THE TITLE AREA! %%%%%%%%%%%
+\headerbox{}{name=title,column=0,row=0,span=2, below=finding, borderColor=white,headerColorOne=white}{
+  \vspace*{-1.75cm} % Align with findings box
+  \centering
+  \begin{minipage}[t][1.75cm][t]{\textwidth}
+    \centering
+    \textcolor{wasp_text}{\mytitlefont \huge \thetitle\\}
+    \textcolor{wasp_text}{\Large \theauthor}\\
+    \textcolor{wasp_text}{\large\thedepinfo}\\
+    \textcolor{wasp_text}{Supervisors: \thesupervisors}\\
+    \begin{tikzpicture}[remember picture, overlay]
+      \begin{scope}
+        \clip (-.27\paperwidth,1) circle (1.1cm); 
+        % YOUR FACE GOES HERE -- OR NOT.
+        % You will probably have to adjust the width so your face is in focus depending on the image you are using.
+        \node[anchor=center] at (-.27\paperwidth,1) {\includegraphics[width=4cm]{example-image-a}};
+      \end{scope}
+      \node[inner sep=0pt, anchor=west] at (-.5\paperwidth, 1) {\includegraphics[height=2.5cm]{university/liu}};
+      % QR CODE FOR YOUR UNIVERSITY PAGE
+      \node[name=university, inner sep=0pt, anchor=east] at (.48\paperwidth, 1) {\includegraphics[width=1.75cm, height=1.75cm]{example-image-b}};
+      % QR CODE FOR YOUR LINKED IN OR WHATEVER SOCIAL MEDIA YOU USE, WHO AM I TO TELL YOU WHAT TO USE?
+      \node[inner sep=0pt, left=of university, label={[xshift=-.1cm]left:{Hit me up! $\rightarrow$}}] {\includegraphics[width=1.75cm, height=1.75cm]{example-image-a}};
+    \end{tikzpicture}
+  \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{\mytitlefont Motivation}{name=description,column=0,row=0,span=2, below=title}{
+  \mytextfont
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \input{parts/motivation}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{\mytitlefont Method }{name=method,column=0,row=0,span=1, below=description}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mytextfont
+\input{parts/method}
+}
+
+\headerbox{\mytitlefont Discussion }{name=discussion,column=0,row=0,span=1, below=method}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mytextfont
+\input{parts/discussion}
+}
+
+\headerbox{\mytitlefont Examples }{name=examples,column=1,row=0,span=1, below=description}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mytextfont
+\input{parts/examples}
+}
+
+% references or whatever
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{References}{headerColorOne=wasp_banner_dark, borderColor=wasp_banner_dark, name=references,column=1,row=0,span=1, below=examples}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\mytextfont
+  \input{parts/references}
+}
+
+% THIS GUY FIXES THE WASP LATEX TEMPLATE BULLSHIT WHERE THE BANNER DOESN'T EXTEND OUT INTO THE MARGINS.
+\fboxsep10pt
+\hspace{-2.25cm}
+\colorbox{wasp_banner_dark}{\begin{minipage}{1.05\paperwidth}
+\hfill\includegraphics[height=1cm]{waspwhite}~\hspace{2em}~\vspace{2ex}\\~
+\end{minipage}}
+
+
+\end{poster}
+\end{document}
